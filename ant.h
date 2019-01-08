@@ -14,7 +14,7 @@ class Ant {
    Down
   };
 
-  Ant(Point);
+  explicit Ant(Point);
 
   void moveLeft();
   void moveRight();
