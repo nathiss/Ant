@@ -2,7 +2,8 @@
 
 namespace nathiss::automatons::ant {
 
-App::App(int ac, char **av) : argc(ac), argv(av), pause(false) {
+App::App(int ac, char **av) noexcept
+    : argc(ac), argv(av), pause(false) {
   this->window = std::make_unique<sf::RenderWindow>(
     sf::VideoMode(640, 320),
     "Langton's Ant",
@@ -14,8 +15,8 @@ App::App(int ac, char **av) : argc(ac), argv(av), pause(false) {
   this->map = std::make_unique<Map>();
 }
 
-int App::run() {
-  sf::Event event;
+int App::run() noexcept {
+  static sf::Event event;
 
   while(this->window->isOpen()) {
     while(this->window->pollEvent(event)) {
@@ -40,16 +41,16 @@ int App::run() {
     this->draw();
     this->window->display();
   }  // while(open)
-  
+
   return 0;
 }
 
-void App::update() {
+void App::update() noexcept {
   if (this->pause) {
     return;
   }
 
-  auto position = this->ant->getPosition();  
+  auto position = this->ant->getPosition();
 
   auto color = this->map->getColor(position);
   if (color == sf::Color::White) {
@@ -61,7 +62,7 @@ void App::update() {
   this->map->flip(position);
 }
 
-void App::draw() {
+void App::draw() noexcept {
   this->window->clear(sf::Color::White);
   this->window->draw(*this->map);
 }

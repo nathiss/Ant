@@ -1,7 +1,6 @@
 #pragma once
 
 #include "map.h"
-#include "point.h"
 
 namespace nathiss::automatons::ant {
 
@@ -14,15 +13,15 @@ class Ant {
    Down
   };
 
-  explicit Ant(Point);
+  explicit Ant(Point) noexcept;
 
-  void moveLeft();
-  void moveRight();
+  void moveLeft() noexcept;
+  void moveRight() noexcept;
 
-  Point getPosition() const;
+  inline Point getPosition() const noexcept;
 
  private:
-  void move(float speed = Map::cellSize);
+  void move(float speed = Map::cellSize) noexcept;
 
   Point point;
   Direction current_direction;

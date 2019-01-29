@@ -11,13 +11,13 @@ namespace nathiss::automatons::ant {
 
 class App {
  public:
-  App(int argc, char **argv);
+  App(int argc, char **argv) noexcept;
 
-  int run();
+  int run() noexcept;
 
  private:
-  void update();
-  void draw();
+  void update() noexcept;
+  void draw() noexcept;
 
   int argc;
   char **argv;

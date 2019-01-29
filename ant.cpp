@@ -2,9 +2,10 @@
 
 namespace nathiss::automatons::ant {
 
-Ant::Ant(Point p) : point(p), current_direction(Up) {}
+Ant::Ant(Point p) noexcept
+    : point(p), current_direction(Up) {}
 
-void Ant::moveLeft() {
+void Ant::moveLeft() noexcept {
   if (this->current_direction == Left) {
     this->current_direction = Down;
   }
@@ -20,7 +21,7 @@ void Ant::moveLeft() {
   this->move();
 }
 
-void Ant::moveRight() {
+void Ant::moveRight() noexcept {
   if (this->current_direction == Left) {
     this->current_direction = Up;
   }
@@ -36,7 +37,7 @@ void Ant::moveRight() {
   this->move();
 }
 
-void Ant::move(float speed) {
+void Ant::move(float speed) noexcept {
   switch (this->current_direction) {
     case Left:
       this->point.x -= speed;
@@ -53,7 +54,7 @@ void Ant::move(float speed) {
   }
 }
 
-Point Ant::getPosition() const {
+Point Ant::getPosition() const noexcept {
   return this->point;
 }
 

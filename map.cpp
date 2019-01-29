@@ -4,7 +4,7 @@
 
 namespace nathiss::automatons::ant {
 
-void Map::flip(Point point) {
+void Map::flip(Point point) noexcept {
   for (auto& dot : this->dots) {
     if (dot.getPosition() == point) {
       dot.setFillColor(this->negate(dot.getFillColor()));
@@ -21,10 +21,10 @@ void Map::flip(Point point) {
 void Map::draw(sf::RenderTarget& target, sf::RenderStates) const {
   for (const auto& dot : this->dots) {
     target.draw(dot);
-  } 
+  }
 }
 
-sf::Color Map::getColor(Point point) const {
+sf::Color Map::getColor(Point point) const noexcept {
   for (const auto& dot : this->dots) {
     if (dot.getPosition() == point)
       return dot.getFillColor();
@@ -32,12 +32,12 @@ sf::Color Map::getColor(Point point) const {
   return sf::Color::White;
 }
 
-sf::Color Map::negate(sf::Color color) const {
+sf::Color Map::negate(sf::Color color) const noexcept {
   if (color == sf::Color::White)
     return sf::Color::Black;
   if (color == sf::Color::Black)
     return sf::Color::White;
-  return {};
+  return {};  // should never be executed
 }
 
 }  // namespace nathiss::automatons::ant
