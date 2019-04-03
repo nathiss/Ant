@@ -18,7 +18,9 @@ class Ant {
   void moveLeft() noexcept;
   void moveRight() noexcept;
 
-  inline Point getPosition() const noexcept;
+  inline Point getPosition() const noexcept {
+    return this->point;
+  }
 
  private:
   void move(float speed = Map::cellSize) noexcept;

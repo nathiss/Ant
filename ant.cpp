@@ -54,8 +54,4 @@ void Ant::move(float speed) noexcept {
   }
 }
 
-Point Ant::getPosition() const noexcept {
-  return this->point;
-}
-
 }  // namespace nathiss::automatons::ant
